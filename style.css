@@ -1,0 +1,164 @@
+body{
+    position: relative;
+}
+
+canvas{
+    position: absolute;
+}
+
+canvas#canvas {
+    border:3px solid #000;
+    position:relative;
+}
+
+canvas#ghost-canvas {
+    top: 26%;
+    right: 18%;
+    position:absolute;
+}
+
+canvas#myCanvas {
+    position: absolute;
+    top: 10%;
+    left: 85%;
+
+}
+button {
+    font: inherit;
+    background: #3FB4AE;
+    border: 1px solid #3FB4AE;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 0.5rem;
+    position: absolute;
+  }
+  
+  button#clear-btn{
+    top: 0%;
+    right: 0%;
+  }
+
+  button#erase-btn{
+    top: 45%;
+    right: 6%;
+  }
+
+  button#snake-btn{
+    top: 55%;
+    right: 6%;
+  }
+   
+  button#undo-btn{
+    top: 65%;
+    right: 7%;
+  }
+
+  button#square-btn{
+    top: 85%;
+    right: 7%;
+  }
+
+  button#triangle-btn{
+    top: 85%;
+    right: -3%;
+  }
+
+  button#circle-btn{
+    top: 92%;
+    right: 7%;
+  }
+
+  button#dimensional-vortex-btn{
+    top: 75%;
+    right: 6%;
+  }
+
+  button#paint-btn{
+    top : 45%;
+    right : -5%
+  }
+  button:focus {
+    outline: none;
+  }
+  
+  button:hover,
+  button:active {
+    background: #61CAF5;
+    border-color: #61CAF5;
+  }
+
+
+  .slidecontainer {
+    width: 100%; 
+  }
+  
+  .slider{
+    position: absolute;
+    -webkit-appearance: none; 
+    border: 3px solid #000000;
+    appearance: none;
+    width: 10%; 
+    height: 25px; 
+    background: #d3d3d3; 
+    outline: none;
+    opacity: 0.7; 
+    -webkit-transition: .2s; 
+    transition: opacity .2s;
+  }
+  .slider#red-sld {
+    top: 25%;
+    right: 4%;
+  }
+  
+  .slider#blue-sld {
+    top: 30%;
+    right: 4%;
+  }
+
+  .slider#green-sld {
+    top: 35%;
+    right: 4%;
+  }
+
+  .slider#fnt-sld {
+    top: 40%;
+    right: 4%;
+  }
+ 
+  .slider:hover {
+    opacity: 1; 
+  }
+
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 25px; 
+    height: 25px; 
+    cursor: pointer; 
+  }
+
+  .slider#red-sld::-webkit-slider-thumb{
+    background: #FF0000;
+  }
+
+  .slider#blue-sld::-webkit-slider-thumb{
+    background: #0000FF;
+  }
+
+  .slider#green-sld::-webkit-slider-thumb{
+    background: #0CC415;
+  }
+
+  .slider#fnt-sld::-webkit-slider-thumb{
+    background: #000000;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }

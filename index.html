@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DrawIt</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <canvas id="myCanvas" class="c" width="150%" height="95%"></canvas>
+  <div class="slidecontainer">
+     <input type="range" min="1" 
+     max="255" value="50" class="slider" id="red-sld">
+  </div>
+  <div class="slidecontainer">
+    <input type="range" min="1" 
+    max="255" value="50" class="slider" id="blue-sld">
+ </div>
+ <div class="slidecontainer">
+    <input type="range" min="1" 
+    max="255" value="50" class="slider" id="green-sld">
+ </div>
+ <div class="slidecontainer">
+    <input type="range" min="4" 
+    max="45" value="50" class="slider" id="fnt-sld">
+ </div>
+ <canvas id="canvas" width="490px" height="220px" style="z-index:1;">
+    Sorry, your browser doesn't support canvas technology.
+</canvas>
+<canvas id="ghost-canvas" width="490px" height="220px" style="z-index:2;margin-top:-220px;" >
+</canvas>
+  <section id="controls">
+    <button id="clear-btn">CLEAR ALL</button>
+    <button id="undo-btn" value="Off">
+        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path d="M212.333 224.333H12c-6.627 0-12-5.373-12-12V12C0 5.373 5.373 0 12 0h48c6.627 0 12 5.373 12 12v78.112C117.773 39.279 184.26 7.47 258.175 8.007c136.906.994 246.448 111.623 246.157 248.532C504.041 393.258 393.12 504 256.333 504c-64.089 0-122.496-24.313-166.51-64.215-5.099-4.622-5.334-12.554-.467-17.42l33.967-33.967c4.474-4.474 11.662-4.717 16.401-.525C170.76 415.336 211.58 432 256.333 432c97.268 0 176-78.716 176-176 0-97.267-78.716-176-176-176-58.496 0-110.28 28.476-142.274 72.333h98.274c6.627 0 12 5.373 12 12v48c0 6.627-5.373 12-12 12z">
+
+            </path>
+        </svg>
+    </button>
+    <button id="snake-btn" value="Off">
+        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M31.7 83.93C9.492 194.9 191.1 121 195.3 136.6c2.4 8.9-156.4 35.9-163.56 95.4-16.49 137 321.16.7 323.76 8.9 5.5 17.8-218.6 46.4-149.8 157.7 39.7 64.2 114.8 32 164.1 33.4 26.3 42.4 66.5 60.5 96 48 27.7-11.7 14.8-45.6 1.5-76.5l-14.2 15.7 7.7-28.7c-40.3-63.2-182.5-6.2-188.3-19.9-10.2-24.1 216.2-41.5 180.2-158.7-29-94.2-332.7 21.2-332.9 6.1-.2-20.9 188.1-50.4 167.4-94.9-34.3-73.82-210.22 40.8-224.95-33.59C57 63.05 140.3 42.6 132.3 35.24 106.4 11.35 37.92 52.9 31.7 83.93zM387.8 390.8l35.9 33.6-43.5-12.4z">
+           </path>
+         </svg>
+     </button>
+    <button id="erase-btn" value="Off">
+        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M2.586,15.408l4.299,4.299C7.072,19.895,7.326,20,7.592,20h0.001h2h0.4h9.6v-2h-6.958l7.222-7.222 c0.78-0.779,0.78-2.049,0-2.828L14.906,3c-0.779-0.779-2.049-0.779-2.828,0l-4.75,4.749l-4.754,4.843 C1.809,13.371,1.813,14.634,2.586,15.408z M13.492,4.414l4.95,4.95l-2.586,2.586L10.906,7L13.492,4.414z M8.749,9.156l0.743-0.742 l4.95,4.95l-4.557,4.557C9.86,17.946,9.838,17.973,9.816,18H9.593H8.006l-4.005-4.007L8.749,9.156z">
+          </path>
+        </svg>
+    </button>
+    <button id="dimensional-vortex-btn" value="Off"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M256 16A240 240 0 0 0 16 256a240 240 0 0 0 240 240 240 240 0 0 0 240-240A240 240 0 0 0 256 16zm-9 14.73v86.342c-35.304 2.47-124.423 31.35-127.033 129.928H37.605C39.993 81.83 189.513 34.292 247 30.73zm18 .874c.596.158 1.148.33 1.62.52 78.82 31.677 84.33 217.118 77.042 268.052l-36.498-22.813c3.486-34.36-.902-132.647-42.164-156.877V31.604zM41.258 265h85.996c19.485 15.47 77.33 34.583 166.902 25.46l37.7 23.563C163.39 333.03 61.252 291.425 41.26 265z">
+
+        </path>
+    </svg>
+    </button>
+  <button id="paint-btn" value="Off"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M20.02 20.02c-1.415 1.414-2.87 4.939-1.404 12.857 1.467 7.919 5.948 19.18 14.07 32.718l.075.124.07.126c36.072 64.774 100.54 100.053 156.894 156.407 3.535 3.535 4.692 8.141 4.86 12.202.168 4.06-.524 8.036-1.648 12.226-2.248 8.38-6.392 17.635-11.551 27.216-8.686 16.13-20.094 32.615-30.883 44.898l10.23 10.231 168.292-168.291-10.231-10.231c-12.283 10.789-28.768 22.197-44.899 30.883-9.58 5.159-18.835 9.303-27.215 11.551-4.19 1.124-8.166 1.816-12.226 1.648-4.06-.168-8.667-1.325-12.202-4.86-53.66-53.66-81.946-115.656-156.388-156.882l-.137-.076-.132-.08c-13.537-8.123-24.8-12.605-32.718-14.07-7.918-1.467-11.443-.012-12.858 1.402zm27.576 27.576A32 16 45 0 1 81.538 58.91 32 16 45 0 1 92.85 92.851a32 16 45 0 1-33.94-11.313 32 16 45 0 1-11.315-33.942zm125.865 294.157l9.9 9.9L351.652 183.36l-9.9-9.9zm22.628 22.627l9.9 9.9 168.29-168.292-9.899-9.9zm22.53 22.724c21.7 21.843 56.445 58.776 71.301 106.89l18.939-18.938c.264-11.26-.095-21.74-1.047-31.48 5.234 4.6 10.043 11.404 14.27 18.257l25.795-25.795c-4.578-9.167-10.801-17.054-16.325-25.486 8.741 5.196 17.668 10.207 25.477 16.334l40.646-40.646c-6.681-2.406-12.95-6.323-19.066-10.804 9.83 1.596 20.11.934 30.588-.718l25.66-25.66c-3.612-10.324-7.613-20.26-13.055-28.756 11.272 2.37 19.41 8.292 27.163 14.648l19.88-19.88c-3.56-2.767-6.356-6.46-9.117-14.082 6.663 3.66 13.225 3.978 19.931 3.268l14.336-14.336c-48.115-14.856-85.048-49.601-106.89-71.3z">
+
+      </path>
+    </svg>
+   </button>
+    <button id="square-btn" value="Off"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        </svg>
+    </button>
+    <button id="triangle-btn" value="Off"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 00-.054.057L1.027 13.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 00.066-.017.163.163 0 00.055-.06.176.176 0 00-.003-.183L8.12 2.073a.146.146 0 00-.054-.057A.13.13 0 008.002 2a.13.13 0 00-.064.016zm1.044-.45a1.13 1.13 0 00-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" clip-rule="evenodd"></path>
+        </svg>
+    </button>
+    <button id="circle-btn" value="Off"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd">
+
+            </path>
+        </svg>
+    </button>
+  </section>
+  
+</body>
+</html>
